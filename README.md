@@ -6,21 +6,6 @@ python의 가상환경인 venv 같은 별도의 가상환경 관리도구 없이
 
 
 -- FestAPI --
-FestAPI 프로젝트 폴더 구조 구성
-my_fastapi_project/
-├── app/
-│   ├── __init__.py
-│   ├── main.py          # FastAPI 앱 엔트리포인트 (앱 생성)
-│   ├── routers/         # 도메인별 API 라우터 (users, items 등)
-│   ├── models/          # DB 모델 (SQLAlchemy 등)
-│   ├── schemas/         # Pydantic 스키마 (요청/응답 검증)
-│   ├── core/            # 설정, 보안 등
-│   └── database.py      # DB 연결 설정
-├── tests/               # 테스트 코드
-├── .env                 # 환경 변수 파일
-├── requirements.txt     # 의존성 패키지 목록
-└── .gitignore
-
 (app/main.py) 코드 작성
 from fastapi import FastAPI
 
