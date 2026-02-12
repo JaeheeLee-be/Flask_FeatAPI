@@ -1,4 +1,13 @@
-my_int: int = 123 # literal: 값 (단순값)
+def add(a: int, b: int) -> int:
+    return a + b
 
-my_tuple: tuple[str, str] = ("str", "str")
 
+def test_add() -> None:
+    # Given
+    a, b = 1, 1
+
+    # When
+    result = add(a, b)
+
+    # Then
+    assert result == 2

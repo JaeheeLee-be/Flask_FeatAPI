@@ -1,0 +1,44 @@
+-- poetry --
+poetry는 프로젝트 단위로 가상환경을 자동으로 생성하고 관리하고 poetry는 
+pyproject.toml 파일에서 의존성을 관리하고 poetry.rock 파일을 통해 반복 가능한 설치를 보장하기 때문에
+python의 가상환경인 venv 같은 별도의 가상환경 관리도구 없이도 구축할 수 있습니다.
+설치방법: (터미널에서) pip install poetry
+
+
+-- FestAPI --
+(app/main.py) 코드 작성
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
+
+
+
+-- ruff, black, isort --
+ruff: Rust 기반으로 만들어졌으며, 빠른 속도로 린팅과 포매팅을 수행합니다.
+  린팅: 소스 코드를 분석하여 잠재적인 버그, 오류, 스타일 위반, 나쁜 관행(Bad Practice) 등을 찾아내고 경고를 표시하는 과정입니다.
+  포매팅: 정해진 규칙(코딩 컨벤션)에 맞추어 코드의 줄 바꿈, 들여쓰기, 괄호 위치, 공백 등을 자동으로 정리하여 코드를 보기 좋게 꾸미는 과정입니다.
+  
+black: 코드 포매팅(자동화)을 하며	인덴트, 줄 길이, 따옴표 등 스타일 고정합니다.
+isort: 임포트 정렬(자동화)을 하고	import 문 구획화 및 알파벳 순 정렬 (ex: os보다 sys가 위에 있으면 위치를 변경해줌)
+
+
+
+-- mypy --
+파이썬의 mypy 라이브러리는 정적 타입 검사기(Static Type Checker)입니다. 파이썬은 기본적으로 동적 타입 언어이지만,
+mypy를 사용하면 코드 실행 전에 타입 힌트(type hints)를 분석하여 잠재적인 타입 에러를 미리 잡아낼 수 있습니다. 
+하지만 mypy는 코드를 실행 전 정적으로 분석하기 떄문에 동적으로 변하는 타입에 대해 완벽하게 분석하기 어렵고, 타입힌트가
+너무 없거나 복잡한 경우 검사를 건너 뛰거나 Any(어떤 타입이든 허용)타입으로 취급합니다. 그래서 타입체크에 버그가 있을 수 있습니다.
+
+
+
+-- pytest --
+pytest는 파이썬 코드를 간결하고 구조적으로 테스트할 수 있게 해주는 강력한 테스팅 프레임워크입니다. 
+그리고 자동 테스트, 픽스처(fixture)를 통한 데이터 준비, 쉬운 assert 문 사용 등이 특징입니다.
